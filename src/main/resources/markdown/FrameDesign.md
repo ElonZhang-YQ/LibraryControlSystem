@@ -33,7 +33,7 @@ e. Upload embed form includes books all information(name, isbn, author, publish 
 Student Number will be the login username;
 
 ``` java
-public class User{
+public class Student{
 
     private string name;
     
@@ -65,7 +65,7 @@ public class User{
 | String | int(0 for male, 1 for female) | String | String | String | String(file path) | String |
 
 ``` java
-public class User{
+public class Manager{
 
     private string name;
     
