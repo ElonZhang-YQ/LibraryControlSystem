@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Elon.Zhang
  */
-public interface BorrowBookDAO<T> {
+public interface BorrowDAO<T> {
 
     List<T> selectAllBorrowBookInfo();
     

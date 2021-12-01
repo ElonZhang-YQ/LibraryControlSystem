@@ -17,6 +17,8 @@ import java.util.List;
 public interface BookDAO<T> {
     
     List<T> selectAllBooks();
+
+    T selectBookByISBN(String isbn);
     
     void updateBookInfo(T t);
     

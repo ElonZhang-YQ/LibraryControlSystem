@@ -32,7 +32,7 @@ public interface BookService {
      *
      * @return liked books isbn
      */
-    List<String> findAllLikedBooksByUser();
+    List<Book> findAllLikedBooksByUser(String userId);
     
     void addNewLikedBooks(String userId, String isbn);
     

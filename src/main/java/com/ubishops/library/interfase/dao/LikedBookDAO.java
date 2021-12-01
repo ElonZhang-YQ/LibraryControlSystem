@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface LikedBookDAO<T> {
     
-    List<T> selectAllLiedBooks();
+    List<T> selectAllLikedBooks(String userId);
     
     void insertLikedBook(String snumber, String isbn);
     
