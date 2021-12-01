@@ -15,6 +15,7 @@ public class UserDAOImp implements UserDAO {
 
     @Override
     public List selectAllUsers() {
+//        jdbcTemplate.query();
         return null;
     }
 
