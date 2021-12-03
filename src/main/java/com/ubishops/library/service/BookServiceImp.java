@@ -2,6 +2,7 @@ package com.ubishops.library.service;
 
 import com.ubishops.library.entity.Book;
 import com.ubishops.library.entity.BorrowInfo;
+import com.ubishops.library.entity.LikedBook;
 import com.ubishops.library.interfase.dao.BookDAO;
 import com.ubishops.library.interfase.dao.BorrowDAO;
 import com.ubishops.library.interfase.dao.LikedBookDAO;
@@ -59,6 +60,11 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
+    public List<String> findAllCategory() {
+        return bookDAO.selectAllCategory();
+    }
+
+    @Override
     public void addNewBookInfo(Book bookInfo) {
 
         bookDAO.insertBookInfo(bookInfo);
@@ -74,9 +80,9 @@ public class BookServiceImp implements BookService {
     public List<Book> findAllLikedBooksByUser(String userId) {
 
         List<Book> rst = new ArrayList<Book>();
-        List<String> isbns = likedBookDAO.selectAllLikedBooks(userId);
-        for (String isbn : isbns) {
-            rst.add((Book) bookDAO.selectBookByISBN(isbn));
+        List<LikedBook> likedBooks = likedBookDAO.selectAllLikedBooks(userId);
+        for (LikedBook likedBook : likedBooks) {
+            rst.add((Book) bookDAO.selectBookByISBN(likedBook.getIsbn()));
         }
         return rst;
     }

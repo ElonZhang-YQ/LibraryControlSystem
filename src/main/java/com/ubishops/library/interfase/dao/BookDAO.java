@@ -19,6 +19,8 @@ public interface BookDAO<T> {
     List<T> selectAllBooks();
 
     T selectBookByISBN(String isbn);
+
+    List<String> selectAllCategory();
     
     void updateBookInfo(T t);
     

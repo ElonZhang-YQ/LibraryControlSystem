@@ -20,6 +20,8 @@ public interface BookService {
     List<Book> findAllBooksByCategory(String category);
     
     List<Book> searchBooksByKeyWords(String... keywords);
+
+    List<String> findAllCategory();
     
     void addNewBookInfo(Book bookInfo);
     

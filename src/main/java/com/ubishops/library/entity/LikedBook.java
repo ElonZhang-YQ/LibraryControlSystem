@@ -13,7 +13,26 @@ public class LikedBook {
     private String s_number;
     
     private String isbn;
-    
+
+    public String getS_number() {
+        return s_number;
+    }
+
+    public void setS_number(String s_number) {
+        this.s_number = s_number;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public LikedBook() {
+    }
+
     public LikedBook(String s_number, String isbn) {
         
         this.s_number = s_number;

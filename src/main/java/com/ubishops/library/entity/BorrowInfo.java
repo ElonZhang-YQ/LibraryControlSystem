@@ -25,9 +25,12 @@ public class BorrowInfo {
     private int status;
     
     // student number;
-    private int s_number;
-    
-    public BorrowInfo(String id, String isbn, String bookName, String b_date, String r_date, int status, int s_number) {
+    private String s_number;
+
+    public BorrowInfo() {
+    }
+
+    public BorrowInfo(String id, String isbn, String bookName, String b_date, String r_date, int status, String s_number) {
         
         this.id = id;
         this.isbn = isbn;
@@ -86,11 +89,11 @@ public class BorrowInfo {
         this.status = status;
     }
 
-    public int getS_number() {
+    public String getS_number() {
         return s_number;
     }
 
-    public void setS_number(int s_number) {
+    public void setS_number(String s_number) {
         this.s_number = s_number;
     }
 
@@ -99,7 +102,7 @@ public class BorrowInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BorrowInfo that = (BorrowInfo) o;
-        return status == that.status && s_number == that.s_number && Objects.equals(id, that.id) && Objects.equals(isbn, that.isbn) && Objects.equals(bookName, that.bookName) && Objects.equals(b_date, that.b_date) && Objects.equals(r_date, that.r_date);
+        return status == that.status && Objects.equals(s_number, that.s_number) && Objects.equals(id, that.id) && Objects.equals(isbn, that.isbn) && Objects.equals(bookName, that.bookName) && Objects.equals(b_date, that.b_date) && Objects.equals(r_date, that.r_date);
     }
 
     @Override
