@@ -28,11 +28,10 @@ public class UserDAOImp implements UserDAO<User> {
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 User user = new User();
                 user.setName(rs.getString("name"));
-                user.setGender(rs.getInt("gender"));
+                user.setGender(rs.getString("gender"));
                 user.setId(rs.getString("id"));
                 user.setPhone(rs.getString("phone"));
                 user.setEmail(rs.getString("email"));
-                user.setPicture(rs.getString("picture"));
                 user.setPassword(rs.getString("password"));
                 user.setType(rs.getInt("type"));
                 return user;

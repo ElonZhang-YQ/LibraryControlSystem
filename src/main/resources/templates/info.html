@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>info</title>
+</head>
+<body>
+<div class="infoTable" th:fragment="infoTable">
+    <table class="table my-0" id="dataTable">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>ISBN</th>
+            <th>Bookname</th>
+            <th>Borrow date</th>
+            <th>Return date</th>
+            <th>bowwow_amount</th>
+            <th>studentnumber</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="list" type="java"*/-->
+        <tr th:each="info:${list}">
+            <td th:text="${info.id}"></td>
+            <td th:text="${info.isbn}"></td>
+            <td th:text="${info.bookName}"></td>
+            <td th:text="${info.b_date}"></td>
+            <td th:text="${info.r_date}"></td>
+            <td th:text="${info.status}"></td>
+            <td th:text="${info.s_number}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

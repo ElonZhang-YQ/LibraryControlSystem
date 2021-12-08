@@ -33,7 +33,6 @@ public class BookDAOImp implements BookDAO<Book> {
                 book.setCategory(rs.getString("category"));
                 book.setAmount(rs.getInt("amount"));
                 book.setCamount(rs.getInt("c_amount"));
-                book.setPicture(rs.getString("picture"));
                 return book;
             }
         });
@@ -68,7 +67,7 @@ public class BookDAOImp implements BookDAO<Book> {
     @Override
     public void updateBookInfo(Book book) {
 
-        jdbcTemplate.update(SQLConstant.MODIFY_BOOK_INFO, book.getName(), book.getAuthor(), book.getDate(), book.getCategory(), book.getAmount(), book.getCamount(), book.getPicture(), book.getIsbn());
+        jdbcTemplate.update(SQLConstant.MODIFY_BOOK_INFO, book.getName(), book.getAuthor(), book.getDate(), book.getCategory(), book.getAmount(), book.getCamount(), book.getIsbn());
     }
 
     @Override
@@ -80,6 +79,6 @@ public class BookDAOImp implements BookDAO<Book> {
     @Override
     public void insertBookInfo(Book book) {
 
-        jdbcTemplate.update(SQLConstant.INSERT_BOOK_INFO, book.getName(), book.getIsbn(), book.getAuthor(), book.getDate(), book.getCategory(), book.getAmount(), book.getCamount(), book.getPicture());
+        jdbcTemplate.update(SQLConstant.INSERT_BOOK_INFO, book.getName(), book.getIsbn(), book.getAuthor(), book.getDate(), book.getCategory(), book.getAmount(), book.getCamount());
     }
 }

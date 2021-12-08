@@ -21,11 +21,11 @@ public class SQLConstant {
 
     public static String QUERRY_BOOKS_IN_ISBN = "select * from book where isbn = ?";
 
-    public static String MODIFY_BOOK_INFO = "update book set name=?, author=?, date=?, category=?, amount=?, c_amount=?, picture=? where isbn=?";
+    public static String MODIFY_BOOK_INFO = "update book set name=?, author=?, date=?, category=?, amount=?, c_amount=? where isbn=?";
 
     public static String REMOVE_BOOK = "delete from book where isbn=?";
 
-    public static String INSERT_BOOK_INFO = "insert into book(name, isbn, author, date, category, amount, c_amount, picture) values(?,?,?,?,?,?,?,?,?)";
+    public static String INSERT_BOOK_INFO = "insert into book(name, isbn, author, date, category, amount, c_amount) values(?,?,?,?,?,?,?)";
 
     public static String QUERRY_BOOK_CATEGORY = "select distinct category from book";
 

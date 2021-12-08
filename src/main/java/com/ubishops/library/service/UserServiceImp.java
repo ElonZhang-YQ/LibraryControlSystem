@@ -35,11 +35,11 @@ public class UserServiceImp implements UserService<User> {
     }
 
     @Override
-    public User selectSingleUsers(String id, String password, int type) {
+    public User selectSingleUsers(String email, String password, int type) {
 
         List<User> searchRst = selectAllUsers();
         for (User user : searchRst) {
-            if (user.getId().equals(id) && user.getPassword().equals(password) && user.getType() == type) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password) && user.getType() == type) {
                 return user;
             }
         }

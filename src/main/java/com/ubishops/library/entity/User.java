@@ -11,15 +11,13 @@ public class User {
 
     private String name;
     
-    private int gender;
+    private String gender;
     
     private String id;
     
     private String phone;
     
     private String email;
-    
-    private String picture;
     
     private String password;
     
@@ -30,14 +28,13 @@ public class User {
     
     }
     
-    public User(String name, int gender, String id, String phone, String email, String picture, String password, int type) {
+    public User(String name, String gender, String id, String phone, String email, String password, int type) {
         
         this.name = name;
         this.gender = gender;
         this.id = id;
         this.phone = phone;
         this.email = email;
-        this.picture = picture;
         this.password = password;
         this.type = type;
     }
@@ -52,12 +49,12 @@ public class User {
         this.name = name;
     }
     
-    public int getGender() {
+    public String getGender() {
         
         return gender;
     }
     
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         
         this.gender = gender;
     }
@@ -92,16 +89,6 @@ public class User {
         this.email = email;
     }
     
-    public String getPicture() {
-        
-        return picture;
-    }
-    
-    public void setPicture(String picture) {
-        
-        this.picture = picture;
-    }
-    
     public String getPassword() {
         
         return password;
@@ -128,12 +115,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return gender == user.gender && type == user.type && Objects.equals(name, user.name) && Objects.equals(id, user.id) && Objects.equals(phone, user.phone) && Objects.equals(email, user.email) && Objects.equals(picture, user.picture) && Objects.equals(password, user.password);
+        return gender == user.gender && type == user.type && Objects.equals(name, user.name) && Objects.equals(id, user.id) && Objects.equals(phone, user.phone) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
     
     @Override
     public int hashCode() {
         
-        return Objects.hash(name, gender, id, phone, email, picture, password, type);
+        return Objects.hash(name, gender, id, phone, email, password, type);
     }
 }

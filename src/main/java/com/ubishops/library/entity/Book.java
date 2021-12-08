@@ -22,15 +22,13 @@ public class Book {
     private int amount;
     
     // current amount
-    private int c_amount;
-    
-    private String picture;
+    private int camount;
     
     public Book() {
     
     }
     
-    public Book(String name, String isbn, String author, String date, String category, int amount, int c_amount, String picture) {
+    public Book(String name, String isbn, String author, String date, String category, int amount, int camount) {
         
         this.name = name;
         this.isbn = isbn;
@@ -38,8 +36,7 @@ public class Book {
         this.date = date;
         this.category = category;
         this.amount = amount;
-        this.c_amount = c_amount;
-        this.picture = picture;
+        this.camount = camount;
     }
     
     public String getName() {
@@ -103,23 +100,13 @@ public class Book {
     }
     
     public int getCamount() {
-        
-        return c_amount;
+
+        return camount;
     }
     
     public void setCamount(int camount) {
         
-        this.c_amount = c_amount;
-    }
-    
-    public String getPicture() {
-        
-        return picture;
-    }
-    
-    public void setPicture(String picture) {
-        
-        this.picture = picture;
+        this.camount = camount;
     }
     
     @Override
@@ -128,12 +115,12 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return amount == book.amount && c_amount == book.c_amount && Objects.equals(name, book.name) && Objects.equals(isbn, book.isbn) && Objects.equals(author, book.author) && Objects.equals(date, book.date) && Objects.equals(category, book.category) && Objects.equals(picture, book.picture);
+        return amount == book.amount && camount == book.camount && Objects.equals(name, book.name) && Objects.equals(isbn, book.isbn) && Objects.equals(author, book.author) && Objects.equals(date, book.date) && Objects.equals(category, book.category);
     }
     
     @Override
     public int hashCode() {
         
-        return Objects.hash(name, isbn, author, date, category, amount, c_amount, picture);
+        return Objects.hash(name, isbn, author, date, category, amount, camount);
     }
 }

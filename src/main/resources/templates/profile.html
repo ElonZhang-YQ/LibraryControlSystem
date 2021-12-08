@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Library</title>
+    <script th:replace="common/head::static"></script>
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <script th:replace="common/Nav1::static"></script>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <script th:replace="common/Nav2::static"></script>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Profile</h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col offset-xl-2">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold">User Infomation</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mb-3"><label class="form-label"
+                                                                     for="username"><strong>User Id</strong></label>
+                                                <!--/*@thymesVar id="username" type="java"*/-->
+                                                <input class="form-control" type="text" id="userid"
+                                                       th:placeholder="${userid}" name="userid"
+                                                       disabled=true></div>
+                                            <div class="mb-3"><label class="form-label"
+                                                                     for="username"><strong>Username</strong></label>
+                                                <!--/*@thymesVar id="username" type="java"*/-->
+                                                <input class="form-control" type="text" id="username"
+                                                       th:placeholder="${username}" name="username"
+                                                       disabled=true></div>
+                                            <div class="mb-3"><label class="form-label"
+                                                                     for="username"><strong>Gender</strong></label>
+                                                <!--/*@thymesVar id="username" type="java"*/-->
+                                                <input class="form-control" type="text" id="gender"
+                                                       th:placeholder="${Gender}" name="Gender"
+                                                       disabled=true></div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold">Contact Settings</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="/changeEmail" method="post">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email
+                                                            Address</strong></label>
+                                                            <!--/*@thymesVar id="email" type="java"*/-->
+                                                            <input class="form-control" type="email" id="email"
+                                                                   th:placeholder="${email}" th:value="${email}"
+                                                                   name="email"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
+                                            </form>
+                                            <form action="/changePhone" method="post">
+                                                <div class="mb-3"><label class="form-label" for="phone"><strong>phone</strong></label><!--/*@thymesVar id="phone" type="java"*/-->
+                                                <input class="form-control" type="text" id="phone" th:placeholder="${phone}"  th:value="${phone}" name="phone" ></div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+                                            </form>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-header py-3">
+                                                <p class="text-primary m-0 fw-bold">likeed book</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-5"></div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © fp O 2021</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+</body>
+
+</html>

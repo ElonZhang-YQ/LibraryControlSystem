@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Homepage - Library</title>
+
+    <script th:replace="common/head::static"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <script th:replace="common/Nav1::static"></script>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <script th:replace="common/Nav2::static"></script>
+                <div class="container-fluid">
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;
+                                    <select name="limit" class="d-inline-block form-select form-select-sm">
+                                        <option value="10" selected >10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>&nbsp;</label></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end dataTables_filter" id="dataTable_filter">
+                                    <label class="form-label">
+                                        <form th:action="@{'/search'}" method="post">
+                                            <input  name="search" type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
+                                        </form>
+                                        <i class="iconfont if-message"></i>
+                                        <i class="iconfont if-close"></i>
+                                    </label></div>
+                            </div>
+                        </div>
+
+                        <!--/*@thymesVar id="msg" type="java"*/-->
+                        <p style="color: red" th:text="${msg}" th:if="${msg} != null"></p>
+                        <div class="table-responsive table mt-2" id="dataTable1" role="grid" aria-describedby="dataTable_info">
+                            <!-- Button trigger modal -->
+                            <div>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Upload
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog" th:fragment="postDiv">
+                                        <div class="modal-content">
+
+                                            <div class="modal-body">
+                                                <form action="add" method="post">
+                                                    <p>name</p>
+                                                    <input type="text" id="bookname" name="bookname">
+                                                    <p>isbn</p>
+                                                    <input type="text" id="isbn" name="isbn">
+                                                    <p>author</p>
+                                                    <input type="text" id="author" name="author">
+                                                    <p>date</p>
+                                                    <input type="date" id="date" name="date">
+                                                    <p>category</p>
+                                                    <input type="text" id="category" name="category">
+                                                    <p>amount</p>
+                                                    <input type="text"  οnkeyup="this.value=this.value.replace(/\D/g,'')" id="amount" name="amount">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Modify Modal -->
+
+                                <div class="modal fade" id="modify" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modifyLabel" aria-hidden="true">
+                                <div class="modal-dialog" th:fragment="modifyDiv">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modifyLabel">modify</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form th:action="@{'/alt'}" method="post">
+                                                <p>name</p>
+                                                <input type="text" id="modifyname" name="name"value="">
+                                                <p>isbn</p>
+                                                <input type="text" id="modifyisbn" name="isbn" value="" disabled="Ture">
+                                                <p>author</p>
+                                                <input type="text" id="modifyauthor" name="author"value="">
+                                                <p>date</p>
+                                                <input type="date" id="modifydate" name="modifydate"value="">
+                                                <p>category</p>
+                                                <input type="text" id="modifycategory" name="modifycategory"value="">
+                                                <p>amount</p>
+                                                <input type="text" id="modifyamount" name="modifyamount"value="">
+                                                <p>c_amount</p>
+                                                <input type="text" id="modifycamount" name="modifycamount"value="">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div>
+                                <!-- Borrow Modal -->
+
+                                <div class="modal fade" id="borrow" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="borrowLabel" aria-hidden="true">
+                                <div class="modal-dialog" th:fragment="borrowDiv">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="borrowLabel">borrow</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form th:action="@{'/borrow'}" method="post">
+                                                <p>isbn</p>
+                                                <input type="text" id="bisbn" name="bisbn" readonly="readonly" >
+                                                <p>book_name</p>
+                                                <input type="text" id="book_name" name="book_name" readonly="readonly" >
+                                                <p>borrow_date</p>
+                                                <input type="date" id="borrow_date" name="borrow_date">
+                                                <p>return_date</p>
+                                                <input type="date" id="return_date" name="return_date">
+                                                <p>amount</p>
+                                                <input type="text" id="status" name="status">
+                                                <p>student_number</p>
+                                                <input type="text" id="student_number" name="student_number">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="infoTable" th:fragment="infoTable">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th>BookName</th>
+                                        <th>ISBN</th>
+                                        <th>Author</th>
+                                        <th>Date</th>
+                                        <th>Cagtegry</th>
+                                        <th>amount</th>
+                                        <th>c_amount</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--/*@thymesVar id="list" type="java"*/-->
+                                    <tr th:each="info:${list}">
+                                        <td th:text="${info.name}"></td>
+                                        <td th:text="${info.isbn}"></td>
+                                        <td th:text="${info.author}"></td>
+                                        <td th:text="${info.date}"></td>
+                                        <td th:text="${info.category}"></td>
+                                        <td th:text="${info.amount}"></td>
+                                        <td th:text="${info.camount}"></td>
+                                        <td>
+                                            <a class="btn btn-primary" data-bs-toggle="modal"
+                                               th:data-name="${info.name}"
+                                               th:data-isbn="${info.isbn}"
+                                               th:data-author="${info.author}"
+                                               th:data-date="${info.date}"
+                                               th:data-category="${info.category}"
+                                               th:data-bs-amount="${info.amount}"
+                                               th:data-camount="${info.camount}"
+                                               data-bs-target="#modify" >
+                                                modify</a>
+                                            <a class="btn btn-danger"   onclick="return confirm('confirm？')" th:href="@{'/del/'+${info.isbn}}">delete</a>
+                                            <a class="btn btn-primary" data-bs-toggle="modal"
+                                               th:data-name="${info.name}"
+                                               th:data-isbn="${info.isbn}"
+                                               th:data-bs-amount="${info.amount}"
+                                               th:data-camount="${info.camount}"
+                                               data-bs-target="#borrow" >
+                                                borrow</a>
+                                            <a>
+                                                <a th:href="@{'/like/'+${info.isbn}}"class="btn btn-danger">like</a>
+                                                <a th:href="@{'/dislike/'+${info.isbn}}"class="btn btn-success">dislike</a>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <nav class="mt-5" th:if="${page.rows>0}">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item">
+                                            <a class="page-link" th:href="@{${page.path}(current=1)}">first</a>
+                                        </li>
+                                        <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                            <a class="page-link" th:href="@{${page.path}(current=${page.current - 1})}"><-</a></li>
+                                        <li th:class="|page-item ${i==page.current?'active':''}|"
+                                            th:each="i:${#numbers.sequence(page.from,page.to)}">
+                                            <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}">1</a>
+                                        </li>
+                                        <li th:class="|page-item ${page.current==page.total?'disabled':''}|">
+                                            <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">-></a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" th:href="@{${page.path}(current=${page.total})}">last</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © BU 2021</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+</body>
+<script type="text/javascript">
+
+    var Modify = document.getElementById('modify');
+    Modify.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        var amount = button.getAttribute('data-bs-amount')
+        var date = button.getAttribute('data-date')
+        var isbn = button.getAttribute('data-isbn')
+        var category = button.getAttribute('data-category')
+        var author = button.getAttribute('data-author')
+        var name = button.getAttribute('data-name')
+        var camount = button.getAttribute('data-camount')
+
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modifyname = Modify.querySelector("#modifyname");
+        var modifycategory = Modify.querySelector('#modifycategory');
+        var modifyisbn = Modify.querySelector('#modifyisbn');
+        var modifydate = Modify.querySelector('#modifydate');
+        var modifyauthor = Modify.querySelector('#modifyauthor');
+        var modifyamount = Modify.querySelector('#modifyamount');
+        var modifycamount  = Modify.querySelector('#modifycamount');
+        modifyname.value = name
+        modifycategory.value = category
+        modifyisbn.value = isbn
+        modifydate.value = date
+        modifyauthor.value = author
+        modifyamount.value = amount
+        modifycamount.value = camount
+    })
+    var Borrow = document.getElementById('borrow');
+    Borrow.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        var isbn = button.getAttribute('data-isbn')
+        var name = button.getAttribute('data-name')
+
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var book_name = Borrow.querySelector("#book_name");
+        var bisbn = Borrow.querySelector('#bisbn');
+        book_name.value = name
+        bisbn.value = isbn
+    })
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', () => {
+        const inputValue = searchInput.value;
+        alert(inputValue);
+    });
+
+</script>
+</html>
+
